@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'Node20'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -8,10 +12,10 @@ pipeline {
             }
         }
 
-        stage('Install Node') {
+        stage('Verify Node') {
             steps {
-                sh 'curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -'
-                sh 'sudo apt-get install -y nodejs'
+                bat 'node -v'
+                bat 'npm -v'
             }
         }
     }
