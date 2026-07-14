@@ -31,5 +31,15 @@ pipeline {
                 bat 'npx playwright test'
             }
         }
+
+        stage('Publish Report') {
+            steps {
+                publishHTML(target: [
+                    reportDir: 'playwright-report',
+                    reportFiles: 'index.html',
+                    reportName: 'Playwright Report'
+                ])
+            }
+        }
     }
 }
