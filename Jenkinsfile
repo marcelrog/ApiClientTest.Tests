@@ -47,5 +47,3 @@ stage('Publish Report') {
         ])
     }
 }
-
-    }
