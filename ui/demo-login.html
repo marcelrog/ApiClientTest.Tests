@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo Login</title>
+</head>
+<body>
+  <h2>Demo Loginpagina</h2>
+
+  <label>Gebruikersnaam:</label>
+  <input id="username" type="text">
+
+  <label>Wachtwoord:</label>
+  <input id="password" type="password">
+
+  <button id="login">Login</button>
+
+  <div id="welcome" style="display:none; margin-top:20px;">
+    <h3>Welkom, je bent ingelogd!</h3>
+  </div>
+
+  <script>
+    document.getElementById('login').addEventListener('click', () => {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      if (user === 'testuser' && pass === 'secret') {
+        document.getElementById('welcome').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
