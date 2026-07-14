@@ -38,12 +38,14 @@ stage('Archive Report') {
     }
 }
 
-stage('Publish Report') {
-    steps {
-        publishHTML(target: [
-            reportDir: 'playwright-report',
-            reportFiles: 'index.html',
-            reportName: 'Playwright Report'
-        ])
+        stage('Publish Report') {
+            steps {
+                publishHTML(target: [
+                    reportDir: 'playwright-report',
+                    reportFiles: 'index.html',
+                    reportName: 'Playwright Report'
+                ])
+            }
+        }
     }
 }
