@@ -26,20 +26,25 @@ pipeline {
             }
         }
 
-        stage('Run Playwright Tests') {
-            steps {
-                bat 'npx playwright test --reporter=html'
-            }
-        }
-
-        stage('Publish Report') {
-            steps {
-                publishHTML(target: [
-                    reportDir: 'playwright-report',
-                    reportFiles: 'index.html',
-                    reportName: 'Playwright Report'
-                ])
-            }
-        }
+ stage('Run Playwright Tests') {
+    steps {
+        bat 'npx playwright test --reporter=html'
     }
 }
+
+stage('Archive Report') {
+    steps {
+        archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+    }
+}
+
+stage('Publish Report') {
+    steps {
+        publishHTML(target: [
+            reportDir: 'playwright-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright Report'
+        ])
+    }
+}
+
