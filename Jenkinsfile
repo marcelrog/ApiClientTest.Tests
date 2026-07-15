@@ -50,5 +50,11 @@ stage('Archive Report') {
                 ])
             }
         }
+        stage('Copy Report') {
+    steps {
+        bat 'xcopy /E /I playwright-report C:\\Jenkins\\reports\\playwright-report'
+    }
+}
+
     }
 }
